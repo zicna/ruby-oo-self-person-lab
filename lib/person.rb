@@ -34,18 +34,17 @@ class Person
     end
 
     def take_bath
-        #option 1
-        @hygiene = [@hygiene + 4, 0, 10].sort[1]
+        self.hygiene +=4
+        "♪ Rub-a-dub just relaxing in the tub ♫"
+    end
+    #option 1
+        #@hygiene = [@hygiene + 4, 0, 10].sort[1]
         #puts @hygiene
-
+          #option 2
     #     @hygiene = @hygiene + 4
     #    #input = @hygiene
     #    hygiene=(@hygiene)
     #     puts @hygiene
-        
-    
-        return "♪ Rub-a-dub just relaxing in the tub ♫"
-    end
 
     def clean?
         @hygiene > 7 ? true : false
@@ -63,19 +62,31 @@ class Person
     
 
     def work_out
-        @hygiene -= 3
-        @happiness += 2
+        self.hygiene -= 3
+        self.happiness += 2
         return "♪ another one bites the dust ♫"
     end
 
     def call_friend(friend)
-        friend = Person.new(friend)
+        #friend = Person.new(friend)
+        self.happiness +=3
+       friend.happiness+= 3
         return "Hi #{friend.name}! It's #{@name}. How are you?"
+    end
+
+    def start_conversation(person, topic)
+        if topic == "politics"
+            self.happiness -= 2
+            person.happiness -= 2
+            return "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
+            self.happiness += 1
+            person.happiness += 1
+            return "blah blah sun blah rain"
+        else
+            return "blah blah blah blah blah"
+        end
+    
     end
 end
 
-milan = Person.new("Milan")
-milan.hygiene = 8
-puts milan.hygiene
-milan.take_bath
-#puts milan.hygiene
